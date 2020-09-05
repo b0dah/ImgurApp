@@ -9,14 +9,25 @@
 import Foundation
 import UIKit
 
-class Post {
+class Post: Codable {
     var id: String
     var title: String
-    var image: UIImage?
+    var images: [Image]?
+    var comments: [Comment]?
 
-    init(id: String, title: String, image: UIImage) {
+    init(id: String, title: String, images: [Image]) {
         self.id = id
         self.title = title
-        self.image = image
+        self.images = images
+    }
+}
+
+class Image: Codable {
+    var id: String
+    var link: String
+    
+    init(id: String, link: String) {
+        self.id = id
+        self.link = link
     }
 }

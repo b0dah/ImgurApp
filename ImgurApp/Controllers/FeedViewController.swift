@@ -13,7 +13,10 @@ private let cellIdentifier = "FeedCell"
 class FeedViewController: UICollectionViewController {
     
     // MARK:- Properties
-    var posts: [Post] = [Post(id: "1", title: "Title", image: #imageLiteral(resourceName: "image")), Post(id: "1", title: "Title", image: #imageLiteral(resourceName: "image")),Post(id: "1", title: "Title", image: #imageLiteral(resourceName: "image")),Post(id: "1", title: "Title", image: #imageLiteral(resourceName: "image"))]
+    var posts: [Post] = [Post(id: "1", title: "Title", images: [Image(id: "", link: "")]),
+                         Post(id: "1", title: "Title", images: [Image(id: "", link: "")]),
+                         Post(id: "1", title: "Title", images: [Image(id: "", link: "")]),
+                         Post(id: "1", title: "Title", images: [Image(id: "", link: "")])]
     
     // MARK:- Lifecycle
     override func viewDidLoad() {
@@ -28,6 +31,15 @@ class FeedViewController: UICollectionViewController {
         // Navigation Bar Setup
         navigationItem.title = "Feed"
         UINavigationBar.appearance().barTintColor = UIColor.white   // 1
+        
+        // request
+        ImgurAPIHandler.shared.fetchPostsGallery {
+            (posts) in
+            if let posts = posts {
+                self.posts = posts
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     
@@ -48,7 +60,7 @@ extension FeedViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! FeedCell
-        
+        cell.title = posts[indexPath.row].title
         return cell
     }
 }
@@ -114,6 +126,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 // MARK:- Pass Post Data within a Segue
 extension FeedViewController {
     
-   
+    
 }
 

@@ -18,6 +18,8 @@
 		BC97D7312502DBC80063172F /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D7302502DBC80063172F /* CommentCell.swift */; };
 		BC97D7342503811B0063172F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D7332503811B0063172F /* Colors.swift */; };
 		BC97D736250388550063172F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D735250388550063172F /* Post.swift */; };
+		BC97D7392503C3C90063172F /* ImgurAPIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D7382503C3C90063172F /* ImgurAPIHandler.swift */; };
+		BC97D73B2503C84E0063172F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D73A2503C84E0063172F /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		BC97D7302502DBC80063172F /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		BC97D7332503811B0063172F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BC97D735250388550063172F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		BC97D7382503C3C90063172F /* ImgurAPIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurAPIHandler.swift; sourceTree = "<group>"; };
+		BC97D73A2503C84E0063172F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 			children = (
 				BC540B3F25025E690046EDA2 /* AppDelegate.swift */,
 				BC540B4125025E690046EDA2 /* SceneDelegate.swift */,
+				BC97D7372503C3A80063172F /* API */,
 				BC540B59250272990046EDA2 /* Controllers */,
 				BC540B5D250272E00046EDA2 /* Views */,
 				BC540B5E250272EB0046EDA2 /* Models */,
@@ -110,8 +115,17 @@
 			isa = PBXGroup;
 			children = (
 				BC97D7332503811B0063172F /* Colors.swift */,
+				BC97D73A2503C84E0063172F /* API.swift */,
 			);
 			path = Values;
+			sourceTree = "<group>";
+		};
+		BC97D7372503C3A80063172F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				BC97D7382503C3C90063172F /* ImgurAPIHandler.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +202,8 @@
 				BC97D7342503811B0063172F /* Colors.swift in Sources */,
 				BC97D72F2502D8D00063172F /* Comment.swift in Sources */,
 				BC540B4025025E690046EDA2 /* AppDelegate.swift in Sources */,
+				BC97D73B2503C84E0063172F /* API.swift in Sources */,
+				BC97D7392503C3C90063172F /* ImgurAPIHandler.swift in Sources */,
 				BC540B5B250272B90046EDA2 /* FeedViewController.swift in Sources */,
 				BC540B4225025E690046EDA2 /* SceneDelegate.swift in Sources */,
 				BC97D736250388550063172F /* Post.swift in Sources */,

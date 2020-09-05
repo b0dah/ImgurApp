@@ -34,8 +34,9 @@ class FeedCell: UICollectionViewCell {
     // MARK: - Subviews
     private let pictureView: UIImageView = {
         let pictureView = UIImageView()
-        pictureView.image = #imageLiteral(resourceName: "image")
-        pictureView.contentMode = .scaleAspectFit
+        // image placeholder
+        pictureView.image = #imageLiteral(resourceName: "image-placeholder-vertical")
+        pictureView.contentMode = .scaleToFill//.scaleAspectFit
         pictureView.translatesAutoresizingMaskIntoConstraints = false
 //        pictureView.clipsToBounds = true
         return pictureView
@@ -45,9 +46,13 @@ class FeedCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 20)
         label.textColor = .white
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.text = "ALPDLDPAALPDLDPAALPDLDPA"
+        label.textAlignment = .left
+        label.numberOfLines = 2
+        label.layer.shadowColor = UIColor.black.cgColor
+        label.layer.shadowRadius = 5.0
+        label.layer.shadowOpacity = 0.4
+        label.layer.shadowOffset = CGSize(width: 4, height: 4)
+        label.layer.masksToBounds = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -65,8 +70,8 @@ class FeedCell: UICollectionViewCell {
 
         pictureView.addSubview(titleLabel)
         titleLabel.bottomAnchor.constraint(equalTo: pictureView.bottomAnchor, constant: -10).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: pictureView.leadingAnchor).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: pictureView.trailingAnchor).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: pictureView.leadingAnchor, constant: 10).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: pictureView.trailingAnchor, constant: -10).isActive = true
     }
     
     required init?(coder: NSCoder) {

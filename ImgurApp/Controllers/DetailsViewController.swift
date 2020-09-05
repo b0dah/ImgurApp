@@ -21,15 +21,11 @@ class DetailsViewController: UITableViewController {
             }
             
             titleLabel.text = post.title
-            if let image = post.image {
-                pictureView.image = image
-            }
+//            if let image = post.image {!!!!!!
+//                pictureView.image = image
+//            }
         }
     }
-    
-    let comments = [Comment(author: "dksl", text: "dso"),
-                    Comment(author: "dksl", text: "dso"),
-                    Comment(author: "dksl", text: "dso")]
     
     // MARK:- Subviews
     private let headerBackView: UIView = {
@@ -118,12 +114,12 @@ class DetailsViewController: UITableViewController {
 // MARK: - UITableViewDataSource
 extension DetailsViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return comments.count
+        return post?.comments?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: commentCellIdentifier, for: indexPath) as! CommentCell
-        cell.comment = comments[indexPath.row]
+        cell.comment = post?.comments?[indexPath.row] ?? nil
         return cell
     }
 }
