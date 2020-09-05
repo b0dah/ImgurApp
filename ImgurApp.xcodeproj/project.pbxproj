@@ -20,6 +20,9 @@
 		BC97D736250388550063172F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D735250388550063172F /* Post.swift */; };
 		BC97D7392503C3C90063172F /* ImgurAPIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D7382503C3C90063172F /* ImgurAPIHandler.swift */; };
 		BC97D73B2503C84E0063172F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D73A2503C84E0063172F /* API.swift */; };
+		BC97D73E2503F8AA0063172F /* ImageViewDownloaderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D73D2503F8AA0063172F /* ImageViewDownloaderExtension.swift */; };
+		BC97D7402503FAA60063172F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D73F2503FAA60063172F /* Image.swift */; };
+		BC97D744250439DB0063172F /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D743250439DB0063172F /* URLExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		BC97D735250388550063172F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		BC97D7382503C3C90063172F /* ImgurAPIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurAPIHandler.swift; sourceTree = "<group>"; };
 		BC97D73A2503C84E0063172F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		BC97D73D2503F8AA0063172F /* ImageViewDownloaderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewDownloaderExtension.swift; sourceTree = "<group>"; };
+		BC97D73F2503FAA60063172F /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		BC97D743250439DB0063172F /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				BC540B3E25025E690046EDA2 /* ImgurApp */,
+				BC97D73C2503F8710063172F /* UIKitExtensions */,
 				BC540B3D25025E690046EDA2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,6 +114,7 @@
 			children = (
 				BC97D72E2502D8D00063172F /* Comment.swift */,
 				BC97D735250388550063172F /* Post.swift */,
+				BC97D73F2503FAA60063172F /* Image.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -126,6 +134,15 @@
 				BC97D7382503C3C90063172F /* ImgurAPIHandler.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		BC97D73C2503F8710063172F /* UIKitExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				BC97D73D2503F8AA0063172F /* ImageViewDownloaderExtension.swift */,
+				BC97D743250439DB0063172F /* URLExtension.swift */,
+			);
+			path = UIKitExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,12 +216,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC540B602502732D0046EDA2 /* FeedCell.swift in Sources */,
+				BC97D744250439DB0063172F /* URLExtension.swift in Sources */,
 				BC97D7342503811B0063172F /* Colors.swift in Sources */,
 				BC97D72F2502D8D00063172F /* Comment.swift in Sources */,
 				BC540B4025025E690046EDA2 /* AppDelegate.swift in Sources */,
 				BC97D73B2503C84E0063172F /* API.swift in Sources */,
 				BC97D7392503C3C90063172F /* ImgurAPIHandler.swift in Sources */,
+				BC97D7402503FAA60063172F /* Image.swift in Sources */,
 				BC540B5B250272B90046EDA2 /* FeedViewController.swift in Sources */,
+				BC97D73E2503F8AA0063172F /* ImageViewDownloaderExtension.swift in Sources */,
 				BC540B4225025E690046EDA2 /* SceneDelegate.swift in Sources */,
 				BC97D736250388550063172F /* Post.swift in Sources */,
 				BC97D72D25029B600063172F /* DetailsViewController.swift in Sources */,

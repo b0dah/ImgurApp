@@ -27,9 +27,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         navigationController.navigationBar.barTintColor = .systemTeal
         navigationController.navigationBar.tintColor = .white
         navigationController.navigationBar.prefersLargeTitles = true
-        navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController.navigationBar.isTranslucent = false
+        
+        if #available(iOS 13.0, *) {
+            let appearence = UINavigationBarAppearance()
+            appearence.configureWithOpaqueBackground()
+            appearence.titleTextAttributes = [.foregroundColor: UIColor.white]
+            appearence.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            appearence.backgroundColor = .systemTeal
+            navigationController.navigationBar.standardAppearance = appearence
+            navigationController.navigationBar.scrollEdgeAppearance = appearence
+        }
+        
+//        navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        navigationController.navigationBar.isTranslucent = false
 
         // Making NavigationVC Root VC
         self.window?.rootViewController = navigationController

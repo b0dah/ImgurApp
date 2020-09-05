@@ -11,23 +11,23 @@ import UIKit
 class FeedCell: UICollectionViewCell {
     
     // MARK:- Properties
-    var image: UIImage? {
-        didSet {
-            guard let image = image else {
-                print("No image passed")
-                return
-            }
-            pictureView.image = image
-        }
-    }
     
-    var title: String? {
+    var post: Post? {
         didSet {
-            guard let title = title else {
-                print("No title passed for the post")
+            guard let post = post else {
+                print("Nil post received")
                 return
             }
-            titleLabel.text = title
+            
+            post.downloadPrimaryImage {
+                if let imageData = post.primaryImage {
+                    self.pictureView.image = UIImage(data: imageData)
+                }
+            }
+            
+            titleLabel.text = post.title
+            
+            
         }
     }
     
@@ -35,7 +35,7 @@ class FeedCell: UICollectionViewCell {
     private let pictureView: UIImageView = {
         let pictureView = UIImageView()
         // image placeholder
-        pictureView.image = #imageLiteral(resourceName: "image-placeholder-vertical")
+        pictureView.backgroundColor = .lightGray
         pictureView.contentMode = .scaleToFill//.scaleAspectFit
         pictureView.translatesAutoresizingMaskIntoConstraints = false
 //        pictureView.clipsToBounds = true
@@ -79,4 +79,11 @@ class FeedCell: UICollectionViewCell {
     }
 
     
+}
+
+extension FeedCell {
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        pictureView.image = UIImage()
+    }
 }

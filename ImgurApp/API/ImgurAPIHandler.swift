@@ -33,13 +33,12 @@ class ImgurAPIHandler {
             }
             
             do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any] {
-                    let jsonArray = json["data"] as? NSArray
-                    let jsonData = try JSONSerialization.data(withJSONObject: jsonArray!, options: [])
-                    let postsArray = try JSONDecoder().decode([Post].self, from: jsonData)
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] {
                     
                     DispatchQueue.main.async {
-                        completion(postsArray)
+                        if let postsArray = Post.parsePostEntity(with: json) {
+                            completion(postsArray)
+                        }
                     }
                 }
             } catch {
@@ -47,5 +46,47 @@ class ImgurAPIHandler {
             }
         }.resume()
         
+    }
+    
+    public func fetchComments(for postId: String, completion: @escaping ([Comment]?)->()) {
+        
+        print(postId)
+        
+        let parameters = ["commentSort": "top"]
+        
+        guard let url = URL(string: "\(Urls.personalGalleryURL)/\(postId)/comments/")/*?.withQueries(parameters) */else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.setValue("Client-ID \(APIKeys.clientId)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil, response != nil else {
+                print("Comments weren't received!")
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                return
+            }
+            print(data)
+            
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] {
+                    
+                    DispatchQueue.main.async {
+                        print(json)
+                        if let commentsArray = Comment.parseCommentsEntity(with: json) {
+                            completion(commentsArray)
+                        }
+                    }
+                }
+            } catch {
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
+        }.resume()
     }
 }

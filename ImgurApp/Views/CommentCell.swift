@@ -23,7 +23,7 @@ class CommentCell: UITableViewCell {
     let authorLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .boldSystemFont(ofSize: 22)
+        label.font = .boldSystemFont(ofSize: 19)
         return label
     }()
     
@@ -31,6 +31,7 @@ class CommentCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
+        label.textColor = .systemGray
         return label
     }()
     
@@ -42,13 +43,13 @@ class CommentCell: UITableViewCell {
         addSubview(authorLabel)
         authorLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
         authorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-        authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10).isActive = true
+        authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
 
         // Body Label constraints
         addSubview(bodyTextLabel)
         bodyTextLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 10).isActive = true
         bodyTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-        bodyTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10).isActive = true
+        bodyTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
         bodyTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
     }
     

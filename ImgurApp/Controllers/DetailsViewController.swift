@@ -21,9 +21,11 @@ class DetailsViewController: UITableViewController {
             }
             
             titleLabel.text = post.title
-//            if let image = post.image {!!!!!!
-//                pictureView.image = image
-//            }
+            if let image = post.primaryImage {
+                pictureView.image = UIImage(data: image)
+            } else {
+                print("No image passed")
+            }
         }
     }
     
@@ -48,6 +50,7 @@ class DetailsViewController: UITableViewController {
         let pictureView = UIImageView()
         pictureView.contentMode = .scaleAspectFit
         pictureView.translatesAutoresizingMaskIntoConstraints = false
+        pictureView.clipsToBounds = false
         return pictureView
     }()
     
@@ -60,9 +63,9 @@ class DetailsViewController: UITableViewController {
     
     private let commentsHeaderLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 14)
+        label.font = .boldSystemFont(ofSize: 18)
         label.textColor = .systemGray
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.text = "Comments:"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -77,7 +80,16 @@ class DetailsViewController: UITableViewController {
         
         // get rid of Large Navigation Bar
         navigationController?.navigationBar.prefersLargeTitles = false
-
+        
+        // MARK: - Data Request
+        if let postId = post?.id {
+            ImgurAPIHandler.shared.fetchComments(for: postId) { (comments) in
+                if let comments = comments {
+                    self.post?.comments = comments
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
     
     // MARK:- Private Methods
@@ -87,7 +99,7 @@ class DetailsViewController: UITableViewController {
         headerBackView.addSubview(titleLabel)
         titleLabel.topAnchor.constraint(equalTo: headerBackView.topAnchor, constant: 10).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: headerBackView.leadingAnchor, constant: 10).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: headerBackView.trailingAnchor, constant: 10).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: headerBackView.trailingAnchor, constant: -10).isActive = true
         
         // Post Picture View Constraints
         headerBackView.addSubview(pictureView)
@@ -104,9 +116,9 @@ class DetailsViewController: UITableViewController {
         
         // Comments Section Label Constraints
         commentsHeaderBackView.addSubview(commentsHeaderLabel)
-        commentsHeaderLabel.topAnchor.constraint(equalTo: commentsHeaderBackView.topAnchor, constant: 10).isActive = true
-        commentsHeaderLabel.leadingAnchor.constraint(equalTo: commentsHeaderBackView.leadingAnchor, constant: 20).isActive = true
-        commentsHeaderLabel.trailingAnchor.constraint(equalTo: commentsHeaderBackView.trailingAnchor, constant: 20).isActive = true
+        commentsHeaderLabel.topAnchor.constraint(equalTo: commentsHeaderBackView.topAnchor, constant: 20).isActive = true
+        commentsHeaderLabel.leadingAnchor.constraint(equalTo: commentsHeaderBackView.leadingAnchor, constant: 10).isActive = true
+        commentsHeaderLabel.trailingAnchor.constraint(equalTo: commentsHeaderBackView.trailingAnchor, constant: -10).isActive = true
         commentsHeaderLabel.bottomAnchor.constraint(equalTo: commentsHeaderBackView.bottomAnchor, constant: -10).isActive = true
     }
 }

@@ -13,14 +13,17 @@ private let cellIdentifier = "FeedCell"
 class FeedViewController: UICollectionViewController {
     
     // MARK:- Properties
-    var posts: [Post] = [Post(id: "1", title: "Title", images: [Image(id: "", link: "")]),
-                         Post(id: "1", title: "Title", images: [Image(id: "", link: "")]),
-                         Post(id: "1", title: "Title", images: [Image(id: "", link: "")]),
-                         Post(id: "1", title: "Title", images: [Image(id: "", link: "")])]
+    var posts: [Post] = []
+//    var posts: [Post] = [Post(id: "1", title: "Title", images: [Image(id: "", link: "")]),
+//                         Post(id: "1", title: "Title", images: [Image(id: "", link: "")]),
+//                         Post(id: "1", title: "Title", images: [Image(id: "", link: "")]),
+//                         Post(id: "1", title: "Title", images: [Image(id: "", link: "")])]
     
     // MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.backgroundColor = .white
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,13 +32,14 @@ class FeedViewController: UICollectionViewController {
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: cellIdentifier)
         
         // Navigation Bar Setup
-        navigationItem.title = "Feed"
+        navigationItem.title = "Feed ☄️"
         UINavigationBar.appearance().barTintColor = UIColor.white   // 1
         
         // request
         ImgurAPIHandler.shared.fetchPostsGallery {
-            (posts) in
-            if let posts = posts {
+            (postsArray) in
+             
+            if let posts = postsArray {
                 self.posts = posts
                 self.collectionView.reloadData()
             }
@@ -60,7 +64,10 @@ extension FeedViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! FeedCell
-        cell.title = posts[indexPath.row].title
+        // passing data to the cell
+        if cell.tag == indexPath.row {
+            cell.post = posts[indexPath.row]
+        }
         return cell
     }
 }
@@ -97,6 +104,7 @@ extension FeedViewController {
      }
      */
     
+    // MARK:- Presenting Details View Controller and Data Passing
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailsViewController = DetailsViewController()
         let post = posts[indexPath.row]
@@ -121,11 +129,5 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
-}
-
-// MARK:- Pass Post Data within a Segue
-extension FeedViewController {
-    
-    
 }
 
