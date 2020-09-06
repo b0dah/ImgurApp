@@ -54,7 +54,7 @@ class ImgurAPIHandler {
         
         let parameters = ["commentSort": "top"]
         
-        guard let url = URL(string: "\(Urls.personalGalleryURL)/\(postId)/comments/")/*?.withQueries(parameters) */else {
+        guard let url = URL(string: "\(Urls.personalGalleryURL)/\(postId)/comments/")?.withQueries(parameters) else {
             return
         }
         

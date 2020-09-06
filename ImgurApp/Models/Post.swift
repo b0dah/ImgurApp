@@ -27,7 +27,6 @@ class Post {
     
     // MARK:- public Methods
     public func downloadPrimaryImage(with completion: @escaping ()->()) {
-        print(imageUrl)
         guard let url = URL(string: imageUrl) else {
             print("Wrong image url!")
             return
@@ -69,7 +68,7 @@ class Post {
                 let primaryImageUrl = imagesArray.first?["link"] as? String
                     
               else {
-                  print("Can't parse post object")
+//                  print("Can't parse post object")
                   return nil
               }
               
