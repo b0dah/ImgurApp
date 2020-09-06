@@ -75,7 +75,6 @@ class ImgurAPIHandler {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] {
                     
                     DispatchQueue.main.async {
-                        print(json)
                         if let commentsArray = Comment.parseCommentsEntity(with: json) {
                             completion(commentsArray)
                         }

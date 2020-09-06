@@ -25,7 +25,7 @@ class Post {
         self.imageUrl = imageUrl
     }
     
-    // MARk:- public Methods
+    // MARK:- public Methods
     public func downloadPrimaryImage(with completion: @escaping ()->()) {
         print(imageUrl)
         guard let url = URL(string: imageUrl) else {
@@ -43,6 +43,7 @@ class Post {
             } else {
                 DispatchQueue.main.async {
                     print("Couln't convert data into an image")
+                    print(self?.imageUrl)
                 }
             }
         }
@@ -61,7 +62,12 @@ class Post {
                   let id = postObject["id"] as? String,
                   let title = postObject["title"] as? String,
                 let imagesArray = postObject["images"] as? [[String: AnyObject]],
-                  let primaryImageUrl = imagesArray.first?["link"] as? String
+                let primaryImageType = imagesArray.first?["type"] as? String,
+                
+                /// only images included
+                primaryImageType.hasPrefix("image"),
+                let primaryImageUrl = imagesArray.first?["link"] as? String
+                    
               else {
                   print("Can't parse post object")
                   return nil

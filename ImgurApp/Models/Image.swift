@@ -11,9 +11,11 @@ import Foundation
 class Image: Codable {
     var id: String
     var link: String
+    var type: String
     
-    init(id: String, link: String) {
+    init(id: String, link: String, type: String) {
         self.id = id
         self.link = link
+        self.type = type
     }
 }
