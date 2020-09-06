@@ -19,10 +19,11 @@ class Post {
     var primaryImage: Data?
     var comments: [Comment]?
     
-    init(id: String, title: String, imageUrl: String) {
+    init(id: String, title: String, imageUrl: String, imageData: Data? = nil) {
         self.id = id
         self.title = title
         self.imageUrl = imageUrl
+        self.primaryImage = imageData
     }
     
     // MARK:- public Methods
@@ -72,7 +73,7 @@ class Post {
                   return nil
               }
               
-              let eachPost = Post(id: id, title: title, imageUrl: primaryImageUrl)
+            let eachPost = Post(id: id, title: title, imageUrl: primaryImageUrl)
               return eachPost
           }
           

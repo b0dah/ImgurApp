@@ -11,25 +11,28 @@ import UIKit
 class FeedCell: UICollectionViewCell {
     
     // MARK:- Properties
-    
-    var post: Post? {
-        didSet {
-            guard let post = post else {
-                print("Nil post received")
-                return
-            }
-            
-            post.downloadPrimaryImage {
-                if let imageData = post.primaryImage {
-                    self.pictureView.image = UIImage(data: imageData)
-                }
-            }
-            
-            titleLabel.text = post.title
-            
-            
-        }
-    }
+//    var post: Post? {
+//        didSet {
+//            guard let post = post else {
+//                print("Nil post received")
+//                return
+//            }
+//            
+//            if post.primaryImage == nil {
+//                post.downloadPrimaryImage {
+//                    if let imageData = post.primaryImage {
+//                        self.pictureView.image = UIImage(data: imageData)
+//                    }
+//                }
+//            }
+//            
+//            if let imageData = post.primaryImage {
+//                self.pictureView.image = UIImage(data: imageData)
+//            }
+//            
+//            titleLabel.text = post.title
+//        }
+//    }
     
     // MARK: - Subviews
     private let pictureView: UIImageView = {
@@ -44,7 +47,7 @@ class FeedCell: UICollectionViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 20)
+        label.font = .boldSystemFont(ofSize: 18)
         label.textColor = .white
         label.textAlignment = .left
         label.numberOfLines = 2
@@ -78,12 +81,22 @@ class FeedCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK:- Methods
+    public func updateUI(title: String, imageData: Data?, imageUrl: String) {
+        self.titleLabel.text = title
+        
+        if let imageData = imageData {
+            self.pictureView.image = UIImage(data: imageData)
+        } else {
+//            self.pictureView.downloadImage(from: imageUrl)
+        }
+    }
     
 }
 
 extension FeedCell {
     override func prepareForReuse() {
         super.prepareForReuse()
-        pictureView.image = UIImage()
+        pictureView.image = nil
     }
 }

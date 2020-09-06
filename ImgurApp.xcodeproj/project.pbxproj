@@ -24,6 +24,8 @@
 		BC97D7402503FAA60063172F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D73F2503FAA60063172F /* Image.swift */; };
 		BC97D744250439DB0063172F /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D743250439DB0063172F /* URLExtension.swift */; };
 		BC97D7462504D8330063172F /* PostHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D7452504D8330063172F /* PostHeaderView.swift */; };
+		BC97D748250549380063172F /* PaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D747250549380063172F /* PaginationManager.swift */; };
+		BC97D74A250551600063172F /* SpinnerFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D749250551600063172F /* SpinnerFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		BC97D73F2503FAA60063172F /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		BC97D743250439DB0063172F /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		BC97D7452504D8330063172F /* PostHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeaderView.swift; sourceTree = "<group>"; };
+		BC97D747250549380063172F /* PaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationManager.swift; sourceTree = "<group>"; };
+		BC97D749250551600063172F /* SpinnerFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerFooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 				BC540B5F2502732D0046EDA2 /* FeedCell.swift */,
 				BC97D7302502DBC80063172F /* CommentCell.swift */,
 				BC97D7452504D8330063172F /* PostHeaderView.swift */,
+				BC97D749250551600063172F /* SpinnerFooterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				BC97D7382503C3C90063172F /* ImgurAPIHandler.swift */,
+				BC97D747250549380063172F /* PaginationManager.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -225,6 +231,7 @@
 				BC540B4025025E690046EDA2 /* AppDelegate.swift in Sources */,
 				BC97D73B2503C84E0063172F /* API.swift in Sources */,
 				BC97D7392503C3C90063172F /* ImgurAPIHandler.swift in Sources */,
+				BC97D748250549380063172F /* PaginationManager.swift in Sources */,
 				BC97D7402503FAA60063172F /* Image.swift in Sources */,
 				BC540B5B250272B90046EDA2 /* FeedViewController.swift in Sources */,
 				BC97D73E2503F8AA0063172F /* ImageViewDownloaderExtension.swift in Sources */,
@@ -233,6 +240,7 @@
 				BC97D736250388550063172F /* Post.swift in Sources */,
 				BC97D72D25029B600063172F /* DetailsViewController.swift in Sources */,
 				BC97D7312502DBC80063172F /* CommentCell.swift in Sources */,
+				BC97D74A250551600063172F /* SpinnerFooterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

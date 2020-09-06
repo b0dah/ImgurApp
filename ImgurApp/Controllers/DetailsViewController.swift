@@ -64,9 +64,6 @@ class DetailsViewController: UITableViewController {
     }
     
     // MARK:- Private Methods
-    private func setupCustomHeaderView() {
-        
-    }
 }
 
 // MARK: - UITableViewDataSource

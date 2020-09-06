@@ -86,8 +86,8 @@ class PostHeaderView: UITableViewHeaderFooterView {
         // Post Picture View Constraints
         self.headerBackView.addSubview(self.pictureView)
         self.pictureView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 10.0).isActive = true
-        self.pictureView.leadingAnchor.constraint(equalTo: self.headerBackView.leadingAnchor, constant: 10.0).isActive = true
-        self.pictureView.trailingAnchor.constraint(equalTo: self.headerBackView.trailingAnchor, constant: -10.0).isActive = true
+        self.pictureView.leadingAnchor.constraint(equalTo: self.headerBackView.leadingAnchor).isActive = true
+        self.pictureView.trailingAnchor.constraint(equalTo: self.headerBackView.trailingAnchor).isActive = true
         self.pictureView.bottomAnchor.constraint(equalTo: self.commentsHeaderLabel.topAnchor, constant: -20.0).isActive = true
         
         // Main view

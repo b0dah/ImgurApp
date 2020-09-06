@@ -14,9 +14,17 @@ class ImgurAPIHandler {
     
     private init() {}
     
-    func fetchPostsGallery(_ completion: @escaping ([Post]?)->() ) {
+    public var isPaginating = false
+    
+    func fetchPostsGallery(pagination: Bool = false, pageNumber: Int, _ completion: @escaping ([Post]?)->() ) {
         
-        guard let url = URL(string: Urls.hotSortedPersonalGalleryURL) else {
+        if pagination {
+            isPaginating = true
+        }
+        
+        let parameters : [String: String] = ["page": "\(pageNumber)"]
+        
+        guard let url = URL(string: Urls.hotSortedPersonalGalleryURL)?.withQueries(parameters) else {
             return
         }
         
@@ -28,16 +36,18 @@ class ImgurAPIHandler {
                 print("")
                 DispatchQueue.main.async {
                     completion(nil)
+                    self.isPaginating = false
                 }
                 return
             }
             
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] {
-                    
-                    DispatchQueue.main.async {
-                        if let postsArray = Post.parsePostEntity(with: json) {
+                    if let postsArray = Post.parsePostEntity(with: json) {
+                        
+                        DispatchQueue.main.async {
                             completion(postsArray)
+                            self.isPaginating = false
                         }
                     }
                 }

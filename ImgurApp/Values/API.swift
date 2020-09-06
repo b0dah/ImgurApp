@@ -16,5 +16,9 @@ enum Urls {
 
 enum APIKeys {
     static let clientId = "c2154c0f018adfa"
-    
+}
+
+enum APIValues {
+    static let pageLimit = 50
+    static let imagesPaginationOffset = 8
 }
