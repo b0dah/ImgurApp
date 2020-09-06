@@ -70,34 +70,33 @@ class PostHeaderView: UITableViewHeaderFooterView {
     private func setupViews() {}
     
     private func makeLayout() {
-
+        
         // Title Label Constraints
-        headerBackView.addSubview(titleLabel)
-        titleLabel.topAnchor.constraint(equalTo: headerBackView.topAnchor, constant: 10).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: headerBackView.leadingAnchor, constant: 10).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: headerBackView.trailingAnchor, constant: -10).isActive = true
-        
-        // Post Picture View Constraints
-        headerBackView.addSubview(pictureView)
-        pictureView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
-        pictureView.leadingAnchor.constraint(equalTo: headerBackView.leadingAnchor).isActive = true
-        pictureView.trailingAnchor.constraint(equalTo: headerBackView.trailingAnchor).isActive = true
-        
-        pictureView.bottomAnchor.constraint(equalTo: headerBackView.bottomAnchor, constant: -20).isActive = true
-        
-        // Comments Section BackView View Constraints
-        headerBackView.addSubview(commentsHeaderBackView)
-        commentsHeaderBackView.topAnchor.constraint(equalTo: pictureView.bottomAnchor, constant: 10).isActive = true
-        commentsHeaderBackView.leadingAnchor.constraint(equalTo: headerBackView.leadingAnchor).isActive = true
-        commentsHeaderBackView.trailingAnchor.constraint(equalTo: headerBackView.trailingAnchor).isActive = true
-        commentsHeaderBackView.bottomAnchor.constraint(equalTo: headerBackView.bottomAnchor).isActive = true
+        self.headerBackView.addSubview(self.titleLabel)
+        self.titleLabel.topAnchor.constraint(equalTo: self.headerBackView.topAnchor, constant: 10.0).isActive = true
+        self.titleLabel.leadingAnchor.constraint(equalTo: self.headerBackView.leadingAnchor, constant: 10.0).isActive = true
+        self.titleLabel.trailingAnchor.constraint(equalTo: self.headerBackView.trailingAnchor, constant: -10.0).isActive = true
         
         // Comments Section Label Constraints
-        commentsHeaderBackView.addSubview(commentsHeaderLabel)
-        commentsHeaderLabel.topAnchor.constraint(equalTo: commentsHeaderBackView.topAnchor, constant: 20).isActive = true
-        commentsHeaderLabel.leadingAnchor.constraint(equalTo: commentsHeaderBackView.leadingAnchor, constant: 10).isActive = true
-        commentsHeaderLabel.trailingAnchor.constraint(equalTo: commentsHeaderBackView.trailingAnchor, constant: -10).isActive = true
-        commentsHeaderLabel.bottomAnchor.constraint(equalTo: commentsHeaderBackView.bottomAnchor, constant: -20).isActive = true
+        self.headerBackView.addSubview(self.commentsHeaderLabel)
+        self.commentsHeaderLabel.leadingAnchor.constraint(equalTo: self.headerBackView.leadingAnchor, constant: 10.0).isActive = true
+        self.commentsHeaderLabel.trailingAnchor.constraint(equalTo: self.headerBackView.trailingAnchor, constant: -10.0).isActive = true
+        self.commentsHeaderLabel.bottomAnchor.constraint(equalTo: self.headerBackView.bottomAnchor, constant: -10).isActive = true
+        
+        // Post Picture View Constraints
+        self.headerBackView.addSubview(self.pictureView)
+        self.pictureView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 10.0).isActive = true
+        self.pictureView.leadingAnchor.constraint(equalTo: self.headerBackView.leadingAnchor, constant: 10.0).isActive = true
+        self.pictureView.trailingAnchor.constraint(equalTo: self.headerBackView.trailingAnchor, constant: -10.0).isActive = true
+        self.pictureView.bottomAnchor.constraint(equalTo: self.commentsHeaderLabel.topAnchor, constant: -20.0).isActive = true
+        
+        // Main view
+        self.addSubview(self.headerBackView)
+        self.headerBackView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        self.headerBackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        self.headerBackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        self.headerBackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
     }
     
     // MARK:- Public Methods
