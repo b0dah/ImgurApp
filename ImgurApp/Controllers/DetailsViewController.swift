@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK:- Identifiers
 private let commentCellIdentifier = "CommentCell"
 private let postHeaderViewIdentifier = "PostHeaderView"
 private let postCellIdentifier = "PostHeaderView"
@@ -63,14 +64,18 @@ extension DetailsViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
+        
         case 0:
+            // Post Body Section
             let cell = tableView.dequeueReusableCell(withIdentifier: postCellIdentifier, for: indexPath) as! PostCell
             if let post = self.post {
                 cell.updateInfo(title: post.title, image: post.primaryImage)
             }
             cell.layoutMargins = UIEdgeInsets.zero
             return cell
+        
         case 1:
+            // Comments Section
             let cell = tableView.dequeueReusableCell(withIdentifier: commentCellIdentifier, for: indexPath) as! CommentCell
             cell.comment = post?.comments?[indexPath.row] ?? nil
             return cell

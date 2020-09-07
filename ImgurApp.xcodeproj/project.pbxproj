@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A618C69A3967B75ADB5761FB /* Pods_ImgurApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EE1E07793BDDE1C0B745C5 /* Pods_ImgurApp.framework */; };
 		BC540B4025025E690046EDA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC540B3F25025E690046EDA2 /* AppDelegate.swift */; };
 		BC540B4225025E690046EDA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC540B4125025E690046EDA2 /* SceneDelegate.swift */; };
 		BC540B4925025E6F0046EDA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC540B4825025E6F0046EDA2 /* Assets.xcassets */; };
@@ -30,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8671D0958678D33DBAA3A7A4 /* Pods-ImgurApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImgurApp.debug.xcconfig"; path = "Target Support Files/Pods-ImgurApp/Pods-ImgurApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B8EE1E07793BDDE1C0B745C5 /* Pods_ImgurApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImgurApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBA6262B5FBB75AE577B0518 /* Pods-ImgurApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImgurApp.release.xcconfig"; path = "Target Support Files/Pods-ImgurApp/Pods-ImgurApp.release.xcconfig"; sourceTree = "<group>"; };
 		BC540B3C25025E690046EDA2 /* ImgurApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImgurApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC540B3F25025E690046EDA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC540B4125025E690046EDA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,18 +63,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A618C69A3967B75ADB5761FB /* Pods_ImgurApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05BD538FF70542728E30C508 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8671D0958678D33DBAA3A7A4 /* Pods-ImgurApp.debug.xcconfig */,
+				BBA6262B5FBB75AE577B0518 /* Pods-ImgurApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		BC540B3325025E690046EDA2 = {
 			isa = PBXGroup;
 			children = (
 				BC540B3E25025E690046EDA2 /* ImgurApp */,
 				BC97D73C2503F8710063172F /* UIKitExtensions */,
 				BC540B3D25025E690046EDA2 /* Products */,
+				05BD538FF70542728E30C508 /* Pods */,
+				FB643509F7EADD009F92E2D8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,6 +174,14 @@
 			path = UIKitExtensions;
 			sourceTree = "<group>";
 		};
+		FB643509F7EADD009F92E2D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B8EE1E07793BDDE1C0B745C5 /* Pods_ImgurApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,9 +189,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC540B5025025E6F0046EDA2 /* Build configuration list for PBXNativeTarget "ImgurApp" */;
 			buildPhases = (
+				A98E3D9490D4D0B34EFF8525 /* [CP] Check Pods Manifest.lock */,
 				BC540B3825025E690046EDA2 /* Sources */,
 				BC540B3925025E690046EDA2 /* Frameworks */,
 				BC540B3A25025E690046EDA2 /* Resources */,
+				42F1BB6218888FB54B7CDCCA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -221,6 +248,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		42F1BB6218888FB54B7CDCCA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ImgurApp/Pods-ImgurApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ImgurApp/Pods-ImgurApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ImgurApp/Pods-ImgurApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A98E3D9490D4D0B34EFF8525 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImgurApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BC540B3825025E690046EDA2 /* Sources */ = {
@@ -378,6 +447,7 @@
 		};
 		BC540B5125025E6F0046EDA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8671D0958678D33DBAA3A7A4 /* Pods-ImgurApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -396,6 +466,7 @@
 		};
 		BC540B5225025E6F0046EDA2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBA6262B5FBB75AE577B0518 /* Pods-ImgurApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
