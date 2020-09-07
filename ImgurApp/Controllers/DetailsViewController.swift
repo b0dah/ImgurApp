@@ -28,8 +28,6 @@ class DetailsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.layoutMargins = UIEdgeInsets.zero
-        tableView.separatorInset = UIEdgeInsets.zero
         self.title = "Post"
 
         // register the cells

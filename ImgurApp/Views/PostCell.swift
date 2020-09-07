@@ -30,9 +30,7 @@ class PostCell: UITableViewCell {
     
     private let pictureView: UIImageView = {
         let pictureView = UIImageView()
-        pictureView.contentMode = .scaleAspectFit
         pictureView.translatesAutoresizingMaskIntoConstraints = false
-        //        pictureView.clipsToBounds = false
         return pictureView
     }()
     
@@ -72,23 +70,23 @@ class PostCell: UITableViewCell {
                 
         // Title Label Constraints
         self.headerBackView.addSubview(self.titleLabel)
-        self.titleLabel.topAnchor.constraint(equalTo: self.headerBackView.topAnchor, constant: 10.0).isActive = true
+        self.titleLabel.topAnchor.constraint(equalTo: self.headerBackView.topAnchor, constant: 16.0).isActive = true
         self.titleLabel.leadingAnchor.constraint(equalTo: self.headerBackView.leadingAnchor, constant: 16.0).isActive = true
         self.titleLabel.trailingAnchor.constraint(equalTo: self.headerBackView.trailingAnchor, constant: -16.0).isActive = true
         
         // Post Picture View Constraints
         self.headerBackView.addSubview(self.pictureView)
-        self.pictureView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 10.0).isActive = true
+        self.pictureView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16.0).isActive = true
         self.pictureView.leadingAnchor.constraint(equalTo: self.headerBackView.leadingAnchor).isActive = true
         self.pictureView.trailingAnchor.constraint(equalTo: self.headerBackView.trailingAnchor).isActive = true
 //        self.pictureView.bottomAnchor.constraint(equalTo: self.commentsHeaderLabel.topAnchor, constant: -20.0).isActive = true
         
         // Comments Section Label Constraints
         self.headerBackView.addSubview(self.commentsHeaderLabel)
-        self.commentsHeaderLabel.topAnchor.constraint(equalTo: self.pictureView.bottomAnchor, constant: 10.0).isActive = true
+        self.commentsHeaderLabel.topAnchor.constraint(equalTo: self.pictureView.bottomAnchor, constant: 16.0).isActive = true
         self.commentsHeaderLabel.leadingAnchor.constraint(equalTo: self.headerBackView.leadingAnchor, constant: 10.0).isActive = true
         self.commentsHeaderLabel.trailingAnchor.constraint(equalTo: self.headerBackView.trailingAnchor, constant: -10.0).isActive = true
-        self.commentsHeaderLabel.bottomAnchor.constraint(equalTo: self.headerBackView.bottomAnchor, constant: -10).isActive = true
+        self.commentsHeaderLabel.bottomAnchor.constraint(equalTo: self.headerBackView.bottomAnchor, constant: -16).isActive = true
       
         
         // Main view
