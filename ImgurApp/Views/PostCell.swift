@@ -9,6 +9,7 @@
 import UIKit
 
 class PostCell: UITableViewCell {
+    
     // MARK:- Subviews
     private let headerBackView: UIView = {
         let view = UIView()
@@ -19,7 +20,6 @@ class PostCell: UITableViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-//        label.font = .boldSystemFont(ofSize: 22)
         label.textColor = .darkText
         label.textAlignment = .left
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
@@ -79,7 +79,6 @@ class PostCell: UITableViewCell {
         self.pictureView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16.0).isActive = true
         self.pictureView.leadingAnchor.constraint(equalTo: self.headerBackView.leadingAnchor).isActive = true
         self.pictureView.trailingAnchor.constraint(equalTo: self.headerBackView.trailingAnchor).isActive = true
-//        self.pictureView.bottomAnchor.constraint(equalTo: self.commentsHeaderLabel.topAnchor, constant: -20.0).isActive = true
         
         // Comments Section Label Constraints
         self.headerBackView.addSubview(self.commentsHeaderLabel)
@@ -109,6 +108,8 @@ class PostCell: UITableViewCell {
             }
             
             self.pictureView.image = image
+            
+            // Realtive ImageView Height
             self.pictureView.heightAnchor.constraint(equalToConstant: self.frame.width * image.aspectRatio).isActive = true
             self.pictureView.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
 

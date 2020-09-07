@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Comment: Codable {
+final class Comment: Codable {
     var author: String
     var text: String
     

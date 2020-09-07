@@ -11,34 +11,13 @@ import UIKit
 class FeedCell: UICollectionViewCell {
     
     // MARK:- Properties
-//    var post: Post? {
-//        didSet {
-//            guard let post = post else {
-//                print("Nil post received")
-//                return
-//            }
-//            
-//            if post.primaryImage == nil {
-//                post.downloadPrimaryImage {
-//                    if let imageData = post.primaryImage {
-//                        self.pictureView.image = UIImage(data: imageData)
-//                    }
-//                }
-//            }
-//            
-//            if let imageData = post.primaryImage {
-//                self.pictureView.image = UIImage(data: imageData)
-//            }
-//            
-//            titleLabel.text = post.title
-//        }
-//    }
+
     
     // MARK: - Subviews
     private let pictureView: UIImageView = {
         let pictureView = UIImageView()
         // image placeholder
-        pictureView.backgroundColor = .lightGray
+        pictureView.backgroundColor = .white
         pictureView.contentMode = .scaleToFill//.scaleAspectFit
         pictureView.translatesAutoresizingMaskIntoConstraints = false
 //        pictureView.clipsToBounds = true

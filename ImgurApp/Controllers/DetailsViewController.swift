@@ -15,14 +15,7 @@ private let postCellIdentifier = "PostHeaderView"
 class DetailsViewController: UITableViewController {
     
     // MARK:- Properties
-    var post: Post? {
-        didSet {
-            guard let post = post else {
-                print("Nil post sent")
-                return
-            }
-        }
-    }
+    var post: Post?
     
     // MARK:- Lifecycle
     override func viewDidLoad() {
@@ -33,9 +26,6 @@ class DetailsViewController: UITableViewController {
         // register the cells
         tableView.register(CommentCell.self, forCellReuseIdentifier: commentCellIdentifier)
         tableView.register(PostCell.self, forCellReuseIdentifier: postCellIdentifier)
-        
-        // register the header view
-        self.tableView.register(PostHeaderView.self, forHeaderFooterViewReuseIdentifier: postHeaderViewIdentifier)
         
         // get rid of Large Navigation Bar
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -90,27 +80,6 @@ extension DetailsViewController {
         
         return UITableViewCell()
     }
-}
-
-// MARK:- Post Body with Custom Header Layout
-extension DetailsViewController {
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        guard let header = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: postHeaderViewIdentifier) as? PostHeaderView else {
-//            print("Wrong Header")
-//            return nil
-//        }
-//
-//        if let post = post {
-//            header.updateInfo(title: post.title, image: post.primaryImage)
-//        }
-//
-//        return header
-//    }
-//
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 400
-//    }
-    
 }
 
 

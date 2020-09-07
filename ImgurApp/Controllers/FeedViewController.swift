@@ -14,16 +14,19 @@ private let spinnerFooterReuseIdentifier = "SpinnerFooter"
 class FeedViewController: UICollectionViewController {
     
     // MARK:- Properties
-    var posts: [Post] = []
-    var currentPage = 0
+    private var posts: [Post] = []
+    private var currentPage = 0
         
     // MARK:- Subviews
-    var spinnerFooterView: SpinnerFooterView?
+    private var spinnerFooterView: SpinnerFooterView?
     
     // MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Navigation Bar Setup
+        navigationItem.title = "Feed ☄️"
+        UINavigationBar.appearance().barTintColor = UIColor.white   // 1
         collectionView.backgroundColor = .white
         
         // Register cell classes
@@ -32,11 +35,7 @@ class FeedViewController: UICollectionViewController {
         // Register and Setup the Footer
         self.collectionView!.register(SpinnerFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: spinnerFooterReuseIdentifier)
         
-        // Navigation Bar Setup
-        navigationItem.title = "Feed ☄️"
-        UINavigationBar.appearance().barTintColor = UIColor.white   // 1
-        
-        // request
+        // initial request
         ImgurAPIHandler.shared.fetchPostsGallery(pageNumber: 0) { [weak self]
             (postsArray) in
             if let posts = postsArray {
@@ -108,8 +107,6 @@ extension FeedViewController {
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        print(indexPath.row)
-        
         if indexPath.row == posts.count - 10,
             !ImgurAPIHandler.shared.isPaginating {
             
@@ -129,9 +126,7 @@ extension FeedViewController {
         }
         else if indexPath.row.isMultiple(of: APIValues.imagesPaginationOffset) {
             // image downloading for one more whole screen of content
-            self.fetchImagesForPostsWith(startIndex: indexPath.row + APIValues.imagesPaginationOffset) {
-                //
-            }
+            self.fetchImagesForPostsWith(startIndex: indexPath.row + APIValues.imagesPaginationOffset) {}
         }
     }
     

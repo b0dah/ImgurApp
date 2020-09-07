@@ -12,7 +12,7 @@ extension UIImageView {
     func downloadImage(from url: String) {
             
             guard let url = URL(string: url) else {
-                print("Wrong IMAGE URL!")
+                print("Wrong image URL!")
                 return
             }
                
@@ -20,9 +20,7 @@ extension UIImageView {
                guard let data = data, error == nil else {
                    return
                }
-                   
-    //            print(response?.suggestedFilename!)
-                   
+                                      
                 DispatchQueue.main.async {
                     self.image = UIImage(data: data)
                 }

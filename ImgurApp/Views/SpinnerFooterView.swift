@@ -4,7 +4,6 @@ class SpinnerFooterView: UICollectionReusableView {
     let spinner = UIActivityIndicatorView()
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        spinner.startAnimating()
         spinner.center = self.center
         
         self.addSubview(spinner)
