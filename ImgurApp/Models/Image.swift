@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Image: Codable {
+final class Image: Codable {
     var id: String
     var link: String
     var type: String

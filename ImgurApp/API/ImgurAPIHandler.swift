@@ -11,12 +11,13 @@ import UIKit
 class ImgurAPIHandler {
     
     static let shared = ImgurAPIHandler()
-    
     private init() {}
     
+    // MARK:- Public Properties
     public var isPaginating = false
     
-    func fetchPostsGallery(pagination: Bool = false, pageNumber: Int, _ completion: @escaping ([Post]?)->() ) {
+    // MARK:- Public Methods
+    public func fetchPostsGallery(pagination: Bool = false, pageNumber: Int, _ completion: @escaping ([Post]?)->() ) {
         
         if pagination {
             isPaginating = true
@@ -33,7 +34,7 @@ class ImgurAPIHandler {
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil, response != nil else {
-                print("")
+                print("Error Occured")
                 DispatchQueue.main.async {
                     completion(nil)
                     self.isPaginating = false
@@ -60,8 +61,6 @@ class ImgurAPIHandler {
     
     public func fetchComments(for postId: String, completion: @escaping ([Comment]?)->()) {
         
-        print(postId)
-        
         let parameters = ["commentSort": "top"]
         
         guard let url = URL(string: "\(Urls.personalGalleryURL)/\(postId)/comments/")?.withQueries(parameters) else {
@@ -79,7 +78,6 @@ class ImgurAPIHandler {
                 }
                 return
             }
-            print(data)
             
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] {

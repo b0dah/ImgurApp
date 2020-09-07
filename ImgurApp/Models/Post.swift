@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Post {
+final class Post {
     // Required properties
     var id: String
     var title: String

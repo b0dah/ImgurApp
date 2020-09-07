@@ -11,34 +11,13 @@ import UIKit
 class FeedCell: UICollectionViewCell {
     
     // MARK:- Properties
-//    var post: Post? {
-//        didSet {
-//            guard let post = post else {
-//                print("Nil post received")
-//                return
-//            }
-//            
-//            if post.primaryImage == nil {
-//                post.downloadPrimaryImage {
-//                    if let imageData = post.primaryImage {
-//                        self.pictureView.image = UIImage(data: imageData)
-//                    }
-//                }
-//            }
-//            
-//            if let imageData = post.primaryImage {
-//                self.pictureView.image = UIImage(data: imageData)
-//            }
-//            
-//            titleLabel.text = post.title
-//        }
-//    }
+
     
     // MARK: - Subviews
     private let pictureView: UIImageView = {
         let pictureView = UIImageView()
         // image placeholder
-        pictureView.backgroundColor = .lightGray
+        pictureView.backgroundColor = .white
         pictureView.contentMode = .scaleToFill//.scaleAspectFit
         pictureView.translatesAutoresizingMaskIntoConstraints = false
 //        pictureView.clipsToBounds = true
@@ -53,7 +32,7 @@ class FeedCell: UICollectionViewCell {
         label.numberOfLines = 2
         label.layer.shadowColor = UIColor.black.cgColor
         label.layer.shadowRadius = 5.0
-        label.layer.shadowOpacity = 0.4
+        label.layer.shadowOpacity = 0.7
         label.layer.shadowOffset = CGSize(width: 4, height: 4)
         label.layer.masksToBounds = false
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -88,7 +67,7 @@ class FeedCell: UICollectionViewCell {
         if let imageData = imageData {
             self.pictureView.image = UIImage(data: imageData)
         } else {
-//            self.pictureView.downloadImage(from: imageUrl)
+            self.pictureView.downloadImage(from: imageUrl)
         }
     }
     

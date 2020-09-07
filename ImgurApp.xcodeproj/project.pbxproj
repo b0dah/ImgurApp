@@ -23,9 +23,10 @@
 		BC97D73E2503F8AA0063172F /* ImageViewDownloaderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D73D2503F8AA0063172F /* ImageViewDownloaderExtension.swift */; };
 		BC97D7402503FAA60063172F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D73F2503FAA60063172F /* Image.swift */; };
 		BC97D744250439DB0063172F /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D743250439DB0063172F /* URLExtension.swift */; };
-		BC97D7462504D8330063172F /* PostHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D7452504D8330063172F /* PostHeaderView.swift */; };
 		BC97D748250549380063172F /* PaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D747250549380063172F /* PaginationManager.swift */; };
 		BC97D74A250551600063172F /* SpinnerFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D749250551600063172F /* SpinnerFooterView.swift */; };
+		BC97D74C2505B5A10063172F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D74B2505B5A10063172F /* PostCell.swift */; };
+		BC97D74E2505BFE50063172F /* ImageAspectRatioExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D74D2505BFE50063172F /* ImageAspectRatioExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,9 +48,10 @@
 		BC97D73D2503F8AA0063172F /* ImageViewDownloaderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewDownloaderExtension.swift; sourceTree = "<group>"; };
 		BC97D73F2503FAA60063172F /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		BC97D743250439DB0063172F /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
-		BC97D7452504D8330063172F /* PostHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeaderView.swift; sourceTree = "<group>"; };
 		BC97D747250549380063172F /* PaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationManager.swift; sourceTree = "<group>"; };
 		BC97D749250551600063172F /* SpinnerFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerFooterView.swift; sourceTree = "<group>"; };
+		BC97D74B2505B5A10063172F /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		BC97D74D2505BFE50063172F /* ImageAspectRatioExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAspectRatioExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +113,7 @@
 			children = (
 				BC540B5F2502732D0046EDA2 /* FeedCell.swift */,
 				BC97D7302502DBC80063172F /* CommentCell.swift */,
-				BC97D7452504D8330063172F /* PostHeaderView.swift */,
+				BC97D74B2505B5A10063172F /* PostCell.swift */,
 				BC97D749250551600063172F /* SpinnerFooterView.swift */,
 			);
 			path = Views;
@@ -148,8 +150,9 @@
 		BC97D73C2503F8710063172F /* UIKitExtensions */ = {
 			isa = PBXGroup;
 			children = (
-				BC97D73D2503F8AA0063172F /* ImageViewDownloaderExtension.swift */,
 				BC97D743250439DB0063172F /* URLExtension.swift */,
+				BC97D73D2503F8AA0063172F /* ImageViewDownloaderExtension.swift */,
+				BC97D74D2505BFE50063172F /* ImageAspectRatioExtension.swift */,
 			);
 			path = UIKitExtensions;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				BC97D7342503811B0063172F /* Colors.swift in Sources */,
 				BC97D72F2502D8D00063172F /* Comment.swift in Sources */,
 				BC540B4025025E690046EDA2 /* AppDelegate.swift in Sources */,
+				BC97D74C2505B5A10063172F /* PostCell.swift in Sources */,
 				BC97D73B2503C84E0063172F /* API.swift in Sources */,
 				BC97D7392503C3C90063172F /* ImgurAPIHandler.swift in Sources */,
 				BC97D748250549380063172F /* PaginationManager.swift in Sources */,
@@ -236,10 +240,10 @@
 				BC540B5B250272B90046EDA2 /* FeedViewController.swift in Sources */,
 				BC97D73E2503F8AA0063172F /* ImageViewDownloaderExtension.swift in Sources */,
 				BC540B4225025E690046EDA2 /* SceneDelegate.swift in Sources */,
-				BC97D7462504D8330063172F /* PostHeaderView.swift in Sources */,
 				BC97D736250388550063172F /* Post.swift in Sources */,
 				BC97D72D25029B600063172F /* DetailsViewController.swift in Sources */,
 				BC97D7312502DBC80063172F /* CommentCell.swift in Sources */,
+				BC97D74E2505BFE50063172F /* ImageAspectRatioExtension.swift in Sources */,
 				BC97D74A250551600063172F /* SpinnerFooterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
