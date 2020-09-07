@@ -16,11 +16,7 @@ class FeedViewController: UICollectionViewController {
     // MARK:- Properties
     var posts: [Post] = []
     var currentPage = 0
-//    var posts: [Post] = [Post(id: "1", title: "Title", images: [Image(id: "", link: "")]),
-//                         Post(id: "1", title: "Title", images: [Image(id: "", link: "")]),
-//                         Post(id: "1", title: "Title", images: [Image(id: "", link: "")]),
-//                         Post(id: "1", title: "Title", images: [Image(id: "", link: "")])]
-    
+        
     // MARK:- Subviews
     var spinnerFooterView: SpinnerFooterView?
     
@@ -35,8 +31,6 @@ class FeedViewController: UICollectionViewController {
         
         // Register and Setup the Footer
         self.collectionView!.register(SpinnerFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: spinnerFooterReuseIdentifier)
-       // Reference size
-//        (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).footerReferenceSize = CGSize(width: self.view.frame.width, height: 100)
         
         // Navigation Bar Setup
         navigationItem.title = "Feed ☄️"
@@ -49,9 +43,9 @@ class FeedViewController: UICollectionViewController {
                 self?.posts.append(contentsOf: posts)
                 self?.collectionView.reloadData()
                 
-//                self?.fetchImagesForPostsWith(startIndex: 0, offset: APIValues.imagesPaginationOffset * 2) {
-//                    self?.collectionView.reloadData()
-//                }
+                self?.fetchImagesForPostsWith(startIndex: 0, offset: APIValues.imagesPaginationOffset) {
+                    self?.collectionView.reloadData()
+                }
             }
         }
         
@@ -74,7 +68,6 @@ extension FeedViewController {
         // passing data to the cell
         let currentPost = posts[indexPath.row]
         cell.updateUI(title: currentPost.title, imageData: currentPost.primaryImage, imageUrl: currentPost.imageUrl)
-        
         return cell
     }
 }
@@ -133,7 +126,8 @@ extension FeedViewController {
                     self?.collectionView.reloadData()
                 }
             }
-        } else if indexPath.row.isMultiple(of: APIValues.imagesPaginationOffset) {
+        }
+        else if indexPath.row.isMultiple(of: APIValues.imagesPaginationOffset) {
             // image downloading for one more whole screen of content
             self.fetchImagesForPostsWith(startIndex: indexPath.row + APIValues.imagesPaginationOffset) {
                 //
@@ -173,18 +167,24 @@ extension FeedViewController {
     public func fetchImagesForPostsWith(startIndex: Int, offset: Int = APIValues.imagesPaginationOffset, completion: @escaping ()->()) {
         let group = DispatchGroup()
         
-        group.enter()
-        for i in startIndex..<startIndex + offset {
+        let boundary = (startIndex + offset < posts.count) ? startIndex + offset : posts.count
+        guard startIndex <= boundary else { return }
+        
+        for i in startIndex..<boundary {
+            group.enter()
             posts[i].downloadPrimaryImage {
                 group.leave()
             }
-            group.wait()
-            
+        }
+        
+        group.notify(queue: .main) {
+            print("Finished all requests.")
             DispatchQueue.main.async {
                 completion()
             }
         }
     }
+    
 }
 
 

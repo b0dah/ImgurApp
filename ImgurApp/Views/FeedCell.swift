@@ -53,7 +53,7 @@ class FeedCell: UICollectionViewCell {
         label.numberOfLines = 2
         label.layer.shadowColor = UIColor.black.cgColor
         label.layer.shadowRadius = 5.0
-        label.layer.shadowOpacity = 0.4
+        label.layer.shadowOpacity = 0.7
         label.layer.shadowOffset = CGSize(width: 4, height: 4)
         label.layer.masksToBounds = false
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -88,7 +88,7 @@ class FeedCell: UICollectionViewCell {
         if let imageData = imageData {
             self.pictureView.image = UIImage(data: imageData)
         } else {
-//            self.pictureView.downloadImage(from: imageUrl)
+            self.pictureView.downloadImage(from: imageUrl)
         }
     }
     
