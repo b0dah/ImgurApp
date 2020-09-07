@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,10 +24,10 @@
 		BC97D73E2503F8AA0063172F /* ImageViewDownloaderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D73D2503F8AA0063172F /* ImageViewDownloaderExtension.swift */; };
 		BC97D7402503FAA60063172F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D73F2503FAA60063172F /* Image.swift */; };
 		BC97D744250439DB0063172F /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D743250439DB0063172F /* URLExtension.swift */; };
-		BC97D748250549380063172F /* PaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D747250549380063172F /* PaginationManager.swift */; };
 		BC97D74A250551600063172F /* SpinnerFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D749250551600063172F /* SpinnerFooterView.swift */; };
 		BC97D74C2505B5A10063172F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D74B2505B5A10063172F /* PostCell.swift */; };
 		BC97D74E2505BFE50063172F /* ImageAspectRatioExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D74D2505BFE50063172F /* ImageAspectRatioExtension.swift */; };
+		BC97D7502505E6760063172F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97D74F2505E6750063172F /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,10 +52,10 @@
 		BC97D73D2503F8AA0063172F /* ImageViewDownloaderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewDownloaderExtension.swift; sourceTree = "<group>"; };
 		BC97D73F2503FAA60063172F /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		BC97D743250439DB0063172F /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
-		BC97D747250549380063172F /* PaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationManager.swift; sourceTree = "<group>"; };
 		BC97D749250551600063172F /* SpinnerFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerFooterView.swift; sourceTree = "<group>"; };
 		BC97D74B2505B5A10063172F /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		BC97D74D2505BFE50063172F /* ImageAspectRatioExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAspectRatioExtension.swift; sourceTree = "<group>"; };
+		BC97D74F2505E6750063172F /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,6 @@
 				8671D0958678D33DBAA3A7A4 /* Pods-ImgurApp.debug.xcconfig */,
 				BBA6262B5FBB75AE577B0518 /* Pods-ImgurApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -159,7 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				BC97D7382503C3C90063172F /* ImgurAPIHandler.swift */,
-				BC97D747250549380063172F /* PaginationManager.swift */,
+				BC97D74F2505E6750063172F /* Result.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -296,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC97D7502505E6760063172F /* Result.swift in Sources */,
 				BC540B602502732D0046EDA2 /* FeedCell.swift in Sources */,
 				BC97D744250439DB0063172F /* URLExtension.swift in Sources */,
 				BC97D7342503811B0063172F /* Colors.swift in Sources */,
@@ -304,7 +304,6 @@
 				BC97D74C2505B5A10063172F /* PostCell.swift in Sources */,
 				BC97D73B2503C84E0063172F /* API.swift in Sources */,
 				BC97D7392503C3C90063172F /* ImgurAPIHandler.swift in Sources */,
-				BC97D748250549380063172F /* PaginationManager.swift in Sources */,
 				BC97D7402503FAA60063172F /* Image.swift in Sources */,
 				BC540B5B250272B90046EDA2 /* FeedViewController.swift in Sources */,
 				BC97D73E2503F8AA0063172F /* ImageViewDownloaderExtension.swift in Sources */,

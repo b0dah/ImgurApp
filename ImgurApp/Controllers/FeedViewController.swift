@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK:- Identifiers
 private let cellIdentifier = "FeedCell"
 private let spinnerFooterReuseIdentifier = "SpinnerFooter"
 
@@ -163,7 +164,7 @@ extension FeedViewController {
     private func fetchImagesForPostsWith(startIndex: Int, offset: Int = APIValues.imagesPaginationOffset, completion: @escaping ()->()) {
         let group = DispatchGroup()
         
-        let boundary = (startIndex + offset < posts.count) ? startIndex + offset : posts.count
+        let boundary = (startIndex + offset < posts.count) ? (startIndex + offset) : posts.count
         guard startIndex <= boundary else { return }
         
         for i in startIndex..<boundary {
