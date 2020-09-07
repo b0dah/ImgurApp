@@ -26,7 +26,7 @@ class FeedViewController: UICollectionViewController {
         super.viewDidLoad()
         
         // Navigation Bar Setup
-        self.setupNavigationController()
+        self.setupNavigationBar()
         
         // CV Appearence
         self.configureCollectionViewAppearence()
@@ -83,10 +83,16 @@ extension FeedViewController {
             
             currentPage += 1
             ImgurAPIHandler.shared.fetchPostsGallery(pagination: true, pageNumber: currentPage) { [weak self]
-                (newlyFetchedPosts) in
-                if let posts = newlyFetchedPosts {
-                    self?.posts.append(contentsOf: posts)
-                    self?.collectionView.reloadData()
+                (result) in
+                
+                switch result {
+                case .error(let error):
+                    print("Error: \(error)")
+                case .results(let newlyFetchedPosts):
+                    if let posts = newlyFetchedPosts {
+                        self?.posts.append(contentsOf: posts)
+                        self?.collectionView.reloadData()
+                    }
                 }
             }
         }
@@ -184,12 +190,17 @@ extension FeedViewController {
     
     private func initialDataRequest() {
         ImgurAPIHandler.shared.fetchPostsGallery(pageNumber: 0) { [weak self]
-            (postsArray) in
+            (result) in
             
             // fetch 1st page json array
-            if let posts = postsArray {
-                self?.posts.append(contentsOf: posts)
-                self?.collectionView.reloadData()
+            switch result {
+            case .error(let error):
+                print("Error: \(error)")
+            case .results(let newlyDownloadedPosts):
+                if let posts = newlyDownloadedPosts {
+                    self?.posts.append(contentsOf: posts)
+                    self?.collectionView.reloadData()
+                }
                 
                 // sequential images preloading
                 self?.fetchImagesForPostsWith(startIndex: 0, offset: APIValues.imagesPaginationOffset) {
@@ -203,7 +214,7 @@ extension FeedViewController {
 
 // MARK:- UI Preparations
 extension FeedViewController {
-    private func setupNavigationController() {
+    private func setupNavigationBar() {
         navigationItem.title = "Feed ☄️"
         UINavigationBar.appearance().barTintColor = UIColor.white
     }

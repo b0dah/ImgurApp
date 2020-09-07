@@ -18,7 +18,7 @@ class FeedCell: UICollectionViewCell {
         let pictureView = UIImageView()
         // image placeholder
         pictureView.backgroundColor = .white
-        pictureView.contentMode = .scaleToFill//.scaleAspectFit
+        pictureView.contentMode = .scaleToFill
         pictureView.translatesAutoresizingMaskIntoConstraints = false
 //        pictureView.clipsToBounds = true
         return pictureView

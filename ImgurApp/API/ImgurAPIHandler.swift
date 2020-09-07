@@ -17,7 +17,7 @@ class ImgurAPIHandler {
     public var isPaginating = false
     
     // MARK:- Public Methods
-    public func fetchPostsGallery(pagination: Bool = false, pageNumber: Int, _ completion: @escaping ([Post]?)->() ) {
+    public func fetchPostsGallery(pagination: Bool = false, pageNumber: Int, _ completion: @escaping (Result<[Post]?>)->() ) {
         
         if pagination {
             isPaginating = true
@@ -26,6 +26,9 @@ class ImgurAPIHandler {
         let parameters : [String: String] = ["page": "\(pageNumber)"]
         
         guard let url = URL(string: Urls.hotSortedPersonalGalleryURL)?.withQueries(parameters) else {
+            DispatchQueue.main.async {
+                completion(Result.error(Error.unknownAPIResponse))
+            }
             return
         }
         
@@ -33,10 +36,19 @@ class ImgurAPIHandler {
         request.setValue("Client-ID \(APIKeys.clientId)", forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data, error == nil, response != nil else {
+            
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    completion(Result.error(error as! Error))
+                    self.isPaginating = false
+                }
+                return
+            }
+            
+            guard let data = data, response != nil else {
                 print("Error Occured")
                 DispatchQueue.main.async {
-                    completion(nil)
+                    completion(Result.error(Error.unknownAPIResponse))
                     self.isPaginating = false
                 }
                 return
@@ -47,7 +59,7 @@ class ImgurAPIHandler {
                     if let postsArray = Post.parsePostEntity(with: json) {
                         
                         DispatchQueue.main.async {
-                            completion(postsArray)
+                            completion(Result.results(postsArray))
                             self.isPaginating = false
                         }
                     }
@@ -59,11 +71,14 @@ class ImgurAPIHandler {
         
     }
     
-    public func fetchComments(for postId: String, completion: @escaping ([Comment]?)->()) {
+    public func fetchComments(for postId: String, completion: @escaping (Result<[Comment]?>)->()) {
         
         let parameters = ["commentSort": "top"]
         
         guard let url = URL(string: "\(Urls.personalGalleryURL)/\(postId)/comments/")?.withQueries(parameters) else {
+                DispatchQueue.main.async {
+                    completion(Result.error(Error.unknownAPIResponse))
+                }
             return
         }
         
@@ -74,7 +89,7 @@ class ImgurAPIHandler {
             guard let data = data, error == nil, response != nil else {
                 print("Comments weren't received!")
                 DispatchQueue.main.async {
-                    completion(nil)
+                    completion(Result.error(Error.unknownAPIResponse))
                 }
                 return
             }
@@ -84,14 +99,14 @@ class ImgurAPIHandler {
                     
                     DispatchQueue.main.async {
                         if let commentsArray = Comment.parseCommentsEntity(with: json) {
-                            completion(commentsArray)
+                            completion(Result.results(commentsArray))
                         }
                     }
                 }
-            } catch {
+            } catch let error {
                 print(error.localizedDescription)
                 DispatchQueue.main.async {
-                    completion(nil)
+                    completion(Result.error(error as! Error))
                 }
             }
         }.resume()

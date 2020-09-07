@@ -22,24 +22,11 @@ class DetailsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Post"
-
-        // register the cells
-        tableView.register(CommentCell.self, forCellReuseIdentifier: commentCellIdentifier)
-        tableView.register(PostCell.self, forCellReuseIdentifier: postCellIdentifier)
-        
-        // get rid of Large Navigation Bar
-        navigationController?.navigationBar.prefersLargeTitles = false
+        self.setupNavigationBar()
+        self.registerIdentifiers()
         
         // MARK: - Data Request
-        if let postId = post?.id {
-            ImgurAPIHandler.shared.fetchComments(for: postId) { (fetchedComments) in
-                if let comments = fetchedComments {
-                    self.post?.comments = comments
-                    self.tableView.reloadData()
-                }
-            }
-        }
+        self.initialDataRequest()
     }
     
     // MARK:- Private Methods
@@ -53,9 +40,9 @@ extension DetailsViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
+        case 0: // Post Body Section
             return 1
-        case 1:
+        case 1: // Comments Section
             return post?.comments?.count ?? 0
         default:
             return 0
@@ -65,8 +52,7 @@ extension DetailsViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         
-        case 0:
-            // Post Body Section
+        case 0: // Post Body Section
             let cell = tableView.dequeueReusableCell(withIdentifier: postCellIdentifier, for: indexPath) as! PostCell
             if let post = self.post {
                 cell.updateInfo(title: post.title, image: post.primaryImage)
@@ -74,8 +60,7 @@ extension DetailsViewController {
             cell.layoutMargins = UIEdgeInsets.zero
             return cell
         
-        case 1:
-            // Comments Section
+        case 1: // Comments Section
             let cell = tableView.dequeueReusableCell(withIdentifier: commentCellIdentifier, for: indexPath) as! CommentCell
             cell.comment = post?.comments?[indexPath.row] ?? nil
             return cell
@@ -86,5 +71,41 @@ extension DetailsViewController {
         return UITableViewCell()
     }
 }
+
+extension DetailsViewController {
+// MARK:- UI Setup
+    private func setupNavigationBar() {
+        self.title = "Post"
+        // get rid of Large Navigation Bar
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+    }
+
+    private func registerIdentifiers() {
+        // register the cells
+        tableView.register(CommentCell.self, forCellReuseIdentifier: commentCellIdentifier)
+        tableView.register(PostCell.self, forCellReuseIdentifier: postCellIdentifier)
+    }
+}
+
+extension DetailsViewController {
+    private func initialDataRequest() {
+        if let postId = post?.id {
+               ImgurAPIHandler.shared.fetchComments(for: postId) { (result) in
+                   
+                   switch result {
+                   case .error(let error):
+                       print("Error: \(error)")
+                   case .results(let newlyDownloadedComments):
+                       if let comments = newlyDownloadedComments {
+                           self.post?.comments = comments
+                           self.tableView.reloadData()
+                       }
+                   }
+               }
+           }
+    }
+}
+
+
 
 

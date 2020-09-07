@@ -5,7 +5,6 @@ class SpinnerFooterView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         spinner.center = self.center
-        
         self.addSubview(spinner)
     }
 
